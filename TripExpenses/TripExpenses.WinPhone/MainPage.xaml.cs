@@ -13,13 +13,15 @@ using Xamarin.Forms;
 
 namespace TripExpenses.WinPhone
 {
-  public partial class MainPage : PhoneApplicationPage
-  {
-    public MainPage()
-    {
-      InitializeComponent();
-      Forms.Init();
-      Content = TripExpenses.App.GetMainPage().ConvertPageToUIElement(this);
-    }
-  }
+	public partial class MainPage : global::Xamarin.Forms.Platform.WinPhone.FormsApplicationPage
+	{
+		public MainPage()
+		{
+			InitializeComponent();
+			SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
+
+			global::Xamarin.Forms.Forms.Init();
+			LoadApplication(new TripExpenses.App());
+		}
+	}
 }

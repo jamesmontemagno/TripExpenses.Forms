@@ -13,16 +13,15 @@ using Android.Content.PM;
 namespace TripExpenses.Droid
 {
   [Activity(Label = "TripExpenses", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-  public class MainActivity : AndroidActivity
-  {
-    protected override void OnCreate(Bundle bundle)
-    {
-      base.OnCreate(bundle);
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+	{
+		protected override void OnCreate(Bundle bundle)
+		{
+			base.OnCreate(bundle);
 
-      Xamarin.Forms.Forms.Init(this, bundle);
-
-      SetPage(App.GetMainPage());
-    }
-  }
+			global::Xamarin.Forms.Forms.Init(this, bundle);
+			LoadApplication(new App());
+		}
+	}
 }
 

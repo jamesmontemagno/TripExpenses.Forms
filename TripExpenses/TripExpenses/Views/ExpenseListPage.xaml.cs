@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,46 +11,46 @@ namespace TripExpenses.Views
 {
 	public partial class ExpenseListPage
 	{
-    private ExpensesViewModel viewModel;
+		private ExpensesViewModel viewModel;
 
-		public ExpenseListPage ()
+		public ExpenseListPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
-      this.BindingContext = viewModel = new ExpensesViewModel();
+			this.BindingContext = viewModel = new ExpensesViewModel();
 
-      ToolbarItems.Add(new ToolbarItem
-        {
-          Name = "refresh",
-          Icon = "refresh.png",
-          Command = viewModel.LoadExpenses
-        });
+			AddItem.Command = new Command (() => {
+				var detailPage = new DetailsPage (null);
+				Navigation.PushAsync (detailPage);
+			});
 
-      ExpenseList.ItemTapped += (sender, args) =>
-      {
-        if (ExpenseList.SelectedItem == null)
-          return;
 
-        var detailPage = new DetailsPage(args.Item as TripExpense);
-        Navigation.PushAsync(detailPage);
+			ExpenseList.ItemTapped += (sender, args) =>
+			{
+				if (ExpenseList.SelectedItem == null)
+					return;
 
-        ExpenseList.SelectedItem = null;
-      };
+				var detailPage = new DetailsPage(args.Item as TripExpense);
+				Navigation.PushAsync(detailPage);
 
-      ButtonNewExpense.Clicked += async (sender, args) =>
-      {
-        var detailPage = new DetailsPage(null);
-        await Navigation.PushAsync(detailPage);
-      };
+				ExpenseList.SelectedItem = null;
+			};
+				
+
+		}
+
+		public void OnDelete (object sender, EventArgs e) {
+			var mi = ((MenuItem)sender);
+			viewModel.DeleteExpense.Execute (mi.CommandParameter);
 		}
 
 
-    protected override void OnAppearing()
-    {
-      base.OnAppearing();
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
 
-      if (!viewModel.Initialized)
-        viewModel.LoadExpenses.Execute(null);
-    }
+			if (!viewModel.Initialized)
+				viewModel.LoadExpenses.Execute(null);
+		}
 	}
 }

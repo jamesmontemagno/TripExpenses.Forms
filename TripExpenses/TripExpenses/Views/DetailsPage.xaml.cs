@@ -6,25 +6,27 @@ using System.Threading.Tasks;
 using TripExpenses.Models;
 using TripExpenses.ViewModels;
 using Xamarin.Forms;
+using TripExpenses.UI;
 
 namespace TripExpenses.Views
 {
 	public partial class DetailsPage
 	{
-    public DetailViewModel ViewModel
-    {
-      get { return BindingContext as DetailViewModel; }
-      set { BindingContext = value; }
-    }
-
-    public DetailsPage(TripExpense expense)
+		
+		public DetailViewModel ViewModel
 		{
-			InitializeComponent ();
-      
-      foreach (var item in DetailViewModel.Categories)
-        PickerCategory.Items.Add(item);
+			get { return BindingContext as DetailViewModel; }
+			set { BindingContext = value; }
+		}
 
-      ViewModel = new DetailViewModel(expense, Navigation);
+		public DetailsPage(TripExpense expense)
+		{
+			InitializeComponent();
+			Type type = typeof(MultiTriggerConverter);
+			foreach (var item in DetailViewModel.Categories)
+				PickerCategory.Items.Add(item);
+
+			ViewModel = new DetailViewModel(expense, Navigation);
 		}
 	}
 }
