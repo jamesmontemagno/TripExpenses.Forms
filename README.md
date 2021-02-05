@@ -7,7 +7,7 @@ Xamarin.Forms Azure Demo of a simple expense app with Azure Mobile Services onli
 
 * By default TripExpenses uses a cross-platform Json Based file system, however you can add Azure Mobile Services easily by following:
 
-* Signup for an Azure Mobile Services account: http://azure.microsoft.com/en-us/services/mobile-services/
+* Signup for an Azure Mobile Services account: https://azure.microsoft.com/services/mobile-services/?WT.mc_id=friends-0000-jamont
 * Open: XMLDataStore.cs and comment OUT the [assemby:Dependency()] flag
 * Create a new Azure Mobile Services Table Called "TripExpense"
 * Open “AzureDataStore.cs" in TripExpenses shared project
@@ -19,5 +19,5 @@ Xamarin.Forms Azure Demo of a simple expense app with Azure Mobile Services onli
 
 ##Watch
 
-* Full Session on Channel 9: http://channel9.msdn.com/Events/dotnetConf/2014/Developing-Native-iOS-Android-and-Windows-Apps-with-Xamarin
+* Full Session on Channel 9: https://channel9.msdn.com/Events/dotnetConf/2014/Developing-Native-iOS-Android-and-Windows-Apps-with-Xamarin?WT.mc_id=friends-0000-jamont
 * Slides available: http://www.slideshare.net/JamesMontemagno/dotnetconf-introduction-to-xamarin-and-xamarinforms
